@@ -83,17 +83,19 @@ public class CLI {
                 if(solved==1)
                     System.out.println("Found!");
                 else
-                    System.out.println("Notfound!");
+                    System.out.println("Not Found!");
 
             }else{
                 System.out.println("A* Selected");
+                System.out.println("Choose Heuristic:\n 1.Manhattan distance\t2.Euclidean distance");
+                int heuristic=scanner.nextInt();
                 String s = "";
                 for(int i = 0; i < 3; i ++){
                     for(int j = 0; j < 3; j++){
                         s += (char)('0'+array2D[i][j]);
                     }
                 }
-                solved = astar.solve_puzzle(s);
+                solved = astar.solve_puzzle(s,heuristic);
                 if(solved==1)
                     System.out.println("Found!");
                 else

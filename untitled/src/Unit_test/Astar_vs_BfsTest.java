@@ -16,7 +16,9 @@ class Astar_vs_BfsTest {
     public void test_1_easy() throws IOException, InterruptedException {
         node init_state=new node("012345678",0);
         bfs.solve_puzzle(init_state);
-        Astar.solve_puzzle("012345678");
+        Astar.solve_puzzle("012345678",1);
+        Assertions.assertEquals(bfs.Path_to_goal().size(),Astar.Path_to_goal().size());
+        Astar.solve_puzzle("012345678",2);
         Assertions.assertEquals(bfs.Path_to_goal().size(),Astar.Path_to_goal().size());
     }
     @Test
@@ -24,35 +26,46 @@ class Astar_vs_BfsTest {
     public void test_2_medium() throws IOException, InterruptedException {
         node init_state=new node("123408657",0);
         bfs.solve_puzzle(init_state);
-        Astar.solve_puzzle("123408657");
+        Astar.solve_puzzle("123408657",1);
+        Assertions.assertEquals(bfs.Path_to_goal().size(),Astar.Path_to_goal().size());
+        Astar.solve_puzzle("123408657",2);
         Assertions.assertEquals(bfs.Path_to_goal().size(),Astar.Path_to_goal().size());
     }
     @Test
     public void test_3_hard() throws IOException, InterruptedException {
         node init_state=new node("123456780",0);
         bfs.solve_puzzle(init_state);
-        Astar.solve_puzzle("123456780");
+        Astar.solve_puzzle("123456780",1);
         Assertions.assertEquals(bfs.Path_to_goal().size(),Astar.Path_to_goal().size());
+        Astar.solve_puzzle("123456780",2);
+        Assertions.assertEquals(bfs.Path_to_goal().size(),Astar.Path_to_goal().size());
+
     }
     @Test
     public void test_5_hard() throws IOException, InterruptedException {
         node init_state=new node("567812340",0);
         bfs.solve_puzzle(init_state);
-        Astar.solve_puzzle("567812340");
+        Astar.solve_puzzle("567812340",1);
+        Assertions.assertEquals(bfs.Path_to_goal().size(),Astar.Path_to_goal().size());
+        Astar.solve_puzzle("567812340",2);
         Assertions.assertEquals(bfs.Path_to_goal().size(),Astar.Path_to_goal().size());
     }
     @Test
     public void test_6_hard() throws IOException, InterruptedException {
         node init_state=new node("123456078",0);
         bfs.solve_puzzle(init_state);
-        Astar.solve_puzzle("123456078");
+        Astar.solve_puzzle("123456078",1);
+        Assertions.assertEquals(bfs.Path_to_goal().size(),Astar.Path_to_goal().size());
+        Astar.solve_puzzle("123456078",2);
         Assertions.assertEquals(bfs.Path_to_goal().size(),Astar.Path_to_goal().size());
     }
     @Test
     public void test_7_hard() throws IOException, InterruptedException {
         node init_state=new node("124356078",0);
         bfs.solve_puzzle(init_state);
-        Astar.solve_puzzle("124356078");
+        Astar.solve_puzzle("124356078",1);
+        Assertions.assertEquals(bfs.Path_to_goal().size(),Astar.Path_to_goal().size());
+        Astar.solve_puzzle("124356078",2);
         Assertions.assertEquals(bfs.Path_to_goal().size(),Astar.Path_to_goal().size());
     }
 

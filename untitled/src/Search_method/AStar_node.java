@@ -4,7 +4,7 @@ public class AStar_node {
     private String state;
 
     private int zero_position;
-    private int fn;
+    private Number fn;
 
     private String parent;
 
@@ -13,7 +13,7 @@ public class AStar_node {
     }
 
     private int depth;
-    public AStar_node(int fn, int depth, String state,String parent){
+    public AStar_node(Number fn, int depth, String state,String parent){
         this.depth = depth;
         this.fn = fn;
         this.state = state;
@@ -36,7 +36,6 @@ public class AStar_node {
         return zero_position;
     }
 
-    public int getFn() {
+    public Number getFn() {
         return fn;
-    }
-}
+    }}

@@ -8,7 +8,7 @@ public class AStar {
     private HashSet<String> InFrontier = new HashSet<>();
     private HashMap<String, String> parent = new HashMap();
     private int max_depth = 0;
-    public int solve_puzzle(String initialState){
+    public int solve_puzzle(String initialState,int choice){
         reset();
         PriorityQueue<AStar_node>frontier = new PriorityQueue<>(new AStar_node_Comparator());
         frontier.add(new AStar_node(0,0,initialState,"Stop!"));
@@ -27,24 +27,35 @@ public class AStar {
             ArrayList<String>neighbours=explorer.get_neighbours(curr_node.getState(),curr_node.getZero_position());
             for(int i=0;i<neighbours.size();i++){
                 String st = neighbours.get(i);
-                if(!this.explored.contains(st)&&!this.InFrontier.contains(st)){
-                    frontier.add(new AStar_node(manhattan_distance(st)+curr_node.getDepth()+1, curr_node.getDepth()+1, st,curr_node.getState()));
-                }
-                else if(this.InFrontier.contains(st)){
-                    frontier.add(new AStar_node(manhattan_distance(st)+curr_node.getDepth()+1, curr_node.getDepth()+1, st,curr_node.getState()));
+                if((!this.explored.contains(st)&&!this.InFrontier.contains(st))||this.InFrontier.contains(st)){
+                    if(choice==1)
+                        frontier.add(new AStar_node(manhattan_distance(st)+curr_node.getDepth()+1, curr_node.getDepth()+1, st,curr_node.getState()));
+                    else
+                        frontier.add(new AStar_node(euclidean_distance(st)+curr_node.getDepth()+1, curr_node.getDepth()+1, st,curr_node.getState()));
                 }
             }
         }
         return 0;
     }
-    public int manhattan_distance(String state){
-        int total_dist = 0;
+    public Integer manhattan_distance(String state){
+        Integer total_dist = 0;
         for(int i=0;i<state.length();i++){
             if(state.charAt(i)=='0')continue;
             int row=i/3,col=i%3;
             int no=Character.getNumericValue(state.charAt(i));
             int no_row=no/3,no_col=no%3;
             total_dist+=(Math.abs(row-no_row)+Math.abs(col-no_col));
+        }
+        return total_dist;
+    }
+    public Double euclidean_distance(String state){
+        Double total_dist =  0.0;
+        for(int i=0;i<state.length();i++){
+            if(state.charAt(i)=='0')continue;
+            int row=i/3,col=i%3;
+            int no=Character.getNumericValue(state.charAt(i));
+            int no_row=no/3,no_col=no%3;
+            total_dist+=Math.sqrt((row-no_row)*(row-no_row)+(col-no_col)*(col-no_col));
         }
         return total_dist;
     }
