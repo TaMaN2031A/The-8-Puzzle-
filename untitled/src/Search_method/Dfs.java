@@ -1,23 +1,19 @@
+package Search_method;
+
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Stack;
 
-public class Dfs {
+public class Dfs implements search_method {
     MovementAndPath explorer = new MovementAndPath();
     private HashSet<String> explored = new HashSet<String>();
     private HashSet<String> frontierNoReptition = new HashSet<String>();
     private HashMap<String, String> parent = new HashMap<String, String>();
     private int max_depth;
 
-//    private void create_path(String goal){
-//        while(!parent.get(goal).equals("Stop!")){
-//            path.add(goal);
-//            goal = parent.get(goal);
-//        }
-//        path.add(goal);
-//    }
-    int rec(node nd){
+
+     public int solve_puzzle(node nd){
         reset();
         Stack<node> frontier = new Stack<node>();
         frontier.push(nd);
@@ -64,7 +60,7 @@ public class Dfs {
     public int getMax_depth() {
         return max_depth;
     }
-    private void reset(){
+    public void reset(){
         parent.clear();
         explored.clear();
         frontierNoReptition.clear();

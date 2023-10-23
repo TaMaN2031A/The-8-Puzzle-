@@ -1,3 +1,5 @@
+package Search_method;
+
 import java.util.ArrayList;
 import java.util.HashMap;
 //i want to call the class explorer

@@ -1,3 +1,5 @@
+package Search_method;
+
 public class node{
     public int depth;
     public int blank_location;

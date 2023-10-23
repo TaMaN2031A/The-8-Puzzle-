@@ -1,3 +1,5 @@
+package Search_method;
+
 import java.util.*;
 
 public class AStar {
@@ -6,7 +8,7 @@ public class AStar {
     private HashSet<String> InFrontier = new HashSet<>();
     private HashMap<String, String> parent = new HashMap();
     private int max_depth = 0;
-    public int A_Star_Search(String initialState){
+    public int solve_puzzle(String initialState){
         reset();
         PriorityQueue<AStar_node>frontier = new PriorityQueue<>(new AStar_node_Comparator());
         frontier.add(new AStar_node(0,0,initialState,"Stop!"));

@@ -1,3 +1,8 @@
+import Search_method.AStar;
+import Search_method.Bfs;
+import Search_method.Dfs;
+import Search_method.node;
+
 import java.util.ArrayList;
 import java.util.Scanner;
 
@@ -7,6 +12,8 @@ public class CLI {
             String in;
             Dfs dfs = new Dfs();
             AStar astar = new AStar();
+            Bfs bfs = new Bfs();
+
             int solved = 0;
             System.out.println("Hello, please insert the array from left to right\n" +
                     "from up to down in one line in this way: 1 2 3 4 0 8 6 5 7");
@@ -38,6 +45,16 @@ public class CLI {
                     "DFS: 1, BFS: 2, A*: 3");
             in = scanner.nextLine();
             int choice = Integer.parseInt(in);
+            if(choice!=1&&choice!=2&&choice!=3) {
+                while (true) {
+                    System.out.println("Enter a valid choice\n");
+                    in = scanner.nextLine();
+                    choice = Integer.parseInt(in);
+                    if (choice == 1 || choice == 2 || choice == 3) {
+                        break;
+                    }
+                }
+            }
             if(choice == 1){
                 System.out.println("DFS Selected");
                 String s = "";
@@ -47,13 +64,26 @@ public class CLI {
                     }
                 }
                 node init = new node(s,0);
-                solved = (dfs.rec(init));
+                solved = (dfs.solve_puzzle(init));
                 if(solved==1)
                     System.out.println("Found!");
                 else
                     System.out.println("Notfound!");
-            }else if(choice == 2){
+            }
+            else if(choice == 2){
                 System.out.println("BFS Selected");
+                String s = "";
+                for(int i = 0; i < 3; i ++){
+                    for(int j = 0; j < 3; j++){
+                        s += (char)('0'+array2D[i][j]);
+                    }
+                }
+                node init = new node(s,0);
+                solved = (bfs.solve_puzzle(init));
+                if(solved==1)
+                    System.out.println("Found!");
+                else
+                    System.out.println("Notfound!");
 
             }else{
                 System.out.println("A* Selected");
@@ -63,7 +93,7 @@ public class CLI {
                         s += (char)('0'+array2D[i][j]);
                     }
                 }
-                solved = astar.A_Star_Search(s);
+                solved = astar.solve_puzzle(s);
                 if(solved==1)
                     System.out.println("Found!");
                 else
@@ -77,6 +107,7 @@ public class CLI {
                 if(choice == 1){
                     System.out.println("There were total number of: " + dfs.get_no_of_expanded_nodes()+  " generated.");
                 }else if(choice == 2){
+                    System.out.println("There were total number of: " + bfs.get_no_of_expanded_nodes()+  " generated.");
 
                 }else{
                     System.out.println("There were total number of: " + astar.get_no_of_expanded_nodes()+  " generated.");
@@ -94,6 +125,10 @@ public class CLI {
 
                         System.out.println(path);
                     }else if(choice == 2){
+                        ArrayList<String>path=bfs.Path_to_goal();
+                        System.out.println("Path cost is: " + (path.size()-1)+  ".");
+
+                        System.out.println(path);
                     }
                     else{
                         ArrayList<String>path=astar.Path_to_goal();
@@ -111,6 +146,7 @@ public class CLI {
                 if(choice == 1){
                     System.out.println("Max depth is: " + dfs.getMax_depth()+  ".");
                 }else if(choice == 2){
+                    System.out.println("Max depth is: " + bfs.getMax_depth()+  ".");
 
                 }else{
                     System.out.println("Max depth is: " + astar.getMax_depth()+  ".");

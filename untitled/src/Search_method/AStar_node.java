@@ -1,3 +1,5 @@
+package Search_method;
+
 public class AStar_node {
     private String state;
 

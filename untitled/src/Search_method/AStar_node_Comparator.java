@@ -1,3 +1,7 @@
+package Search_method;
+
+import Search_method.AStar_node;
+
 import java.util.Comparator;
 public class AStar_node_Comparator implements Comparator<AStar_node> {
     @Override
