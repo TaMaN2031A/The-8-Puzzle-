@@ -65,7 +65,10 @@ public class CLI {
                     }
                 }
                 node init = new node(s,0);
+                long start = System.nanoTime();
                 solved = (dfs.solve_puzzle(init));
+                long end = System.nanoTime();
+                System.out.println(end-start);
                 if(solved==1)
                     System.out.println("Found!");
                 else
@@ -80,7 +83,10 @@ public class CLI {
                     }
                 }
                 node init = new node(s,0);
+                long start = System.nanoTime();
                 solved = (bfs.solve_puzzle(init));
+                long end = System.nanoTime();
+                System.out.println(end-start);
                 if(solved==1)
                     System.out.println("Found!");
                 else
@@ -89,14 +95,19 @@ public class CLI {
             }else{
                 System.out.println("A* Selected");
                 System.out.println("Choose Heuristic:\n 1.Manhattan distance\t2.Euclidean distance");
-                int heuristic=scanner.nextInt();
+
+                int heuristic=Integer.parseInt(scanner.nextLine());
                 String s = "";
                 for(int i = 0; i < 3; i ++){
                     for(int j = 0; j < 3; j++){
                         s += (char)('0'+array2D[i][j]);
                     }
                 }
+
+                long start = System.nanoTime();
                 solved = astar.solve_puzzle(s,heuristic);
+                long end = System.nanoTime();
+                System.out.println(end-start);
                 if(solved==1)
                     System.out.println("Found!");
                 else
@@ -132,7 +143,6 @@ public class CLI {
                     }else if(choice == 2){
                         ArrayList<String>path=bfs.Path_to_goal();
                         System.out.println("Path cost is: " + (path.size()-1)+  ".");
-
                         System.out.println(path);
                         eightPuzzleGUI.showPath(path);
                     }

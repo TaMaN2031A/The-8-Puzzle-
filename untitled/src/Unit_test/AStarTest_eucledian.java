@@ -11,17 +11,15 @@ class AStarTest_eucledian {
     AStar astar=new AStar();
     @Test
     public void test_1_easy() throws IOException, InterruptedException {
-         Assertions.assertEquals(astar.solve_puzzle("012345678",2),1);
+        Assertions.assertEquals(astar.solve_puzzle("012345678",2),1);
         Assertions.assertEquals(astar.getMax_depth(),0);
     }
     @Test
-
     public void test_2_medium() throws IOException, InterruptedException {
          Assertions.assertEquals(astar.solve_puzzle("123408657",2),1);
     }
     @Test
     public void test_3_hard() throws IOException, InterruptedException {
-
         Assertions.assertEquals(astar.solve_puzzle("123456780",2),1);
     }
     @Test
