@@ -9,6 +9,7 @@ import java.util.Scanner;
 public class CLI {
     void take_input(){
         try{
+            EightPuzzleGUI eightPuzzleGUI=new EightPuzzleGUI();
             String in;
             Dfs dfs = new Dfs();
             AStar astar = new AStar();
@@ -126,16 +127,20 @@ public class CLI {
                         System.out.println("Path cost is: " + (path.size()-1)+  ".");
 
                         System.out.println(path);
+                       eightPuzzleGUI.showPath(path);
+
                     }else if(choice == 2){
                         ArrayList<String>path=bfs.Path_to_goal();
                         System.out.println("Path cost is: " + (path.size()-1)+  ".");
 
                         System.out.println(path);
+                        eightPuzzleGUI.showPath(path);
                     }
                     else{
                         ArrayList<String>path=astar.Path_to_goal();
                         System.out.println("Path cost is: " + (path.size()-1)+  ".");
                         System.out.println(path);
+                        eightPuzzleGUI.showPath(path);
                     }
                 }
             }
@@ -154,6 +159,9 @@ public class CLI {
                     System.out.println("Max depth is: " + astar.getMax_depth()+  ".");
                 }
             }
+            eightPuzzleGUI.setVisible(false);
+
+
         }catch(Exception e){
             System.out.println("Something wrong");
         }
