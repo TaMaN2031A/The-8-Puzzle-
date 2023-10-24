@@ -89,6 +89,7 @@ public class CLI {
                 System.out.println("A* Selected");
                 System.out.println("Choose Heuristic:\n 1.Manhattan distance\t2.Euclidean distance");
                 int heuristic=scanner.nextInt();
+                scanner.nextLine();
                 String s = "";
                 for(int i = 0; i < 3; i ++){
                     for(int j = 0; j < 3; j++){
